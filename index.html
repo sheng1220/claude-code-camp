@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件掃描工具 - Document Scanner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 文件掃描工具</h1>
+            <p>上傳身分證或文件照片，自動校正和強化影像品質</p>
+        </header>
+
+        <main>
+            <!-- 工具狀態顯示 -->
+            <div class="tool-status" id="toolStatus" style="display: block;">
+                <div class="status-item">
+                    <span class="status-label">支援格式:</span>
+                    <span class="status-value ready">JPG, PNG, GIF, BMP</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">處理引擎:</span>
+                    <span class="status-value ready">高性能 JavaScript</span>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <div class="drop-zone" id="dropZone">
+                    <div class="upload-icon">📎</div>
+                    <p>拖放檔案至此處或點擊選擇檔案</p>
+                    <input type="file" id="fileInput" multiple accept="image/jpeg,image/jpg,image/png,image/gif,image/bmp" hidden>
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                        選擇檔案
+                    </button>
+                </div>
+                <div class="file-info">
+                    <p>支援格式：JPG, PNG, GIF, BMP 等常見圖片格式</p>
+                </div>
+                
+                <!-- 已選擇檔案清單 -->
+                <div class="selected-files" id="selectedFiles" style="display: none;">
+                    <h4>已選擇的檔案：</h4>
+                    <ul id="fileList"></ul>
+                    <button id="processBtn" class="process-btn">開始處理</button>
+                </div>
+            </div>
+
+            <div class="processing-section" id="processingSection" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p id="statusText">處理中...</p>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h3>處理結果</h3>
+                <div class="image-comparison">
+                    <div class="image-container">
+                        <h4>原始圖片</h4>
+                        <canvas id="originalCanvas"></canvas>
+                    </div>
+                    <div class="image-container">
+                        <h4>處理後圖片</h4>
+                        <canvas id="processedCanvas"></canvas>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="downloadBtn" class="download-btn">下載處理後圖片</button>
+                    <button id="resetBtn" class="reset-btn">重新開始</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 載入 JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
